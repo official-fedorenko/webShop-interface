@@ -5,21 +5,24 @@ const products = [
     name: "Смартфон",
     price: 50000,
     description: "Смартфон с отличной камерой и производительностью.",
-    image: "img/products/smartphone.png",
+    image:
+      "https://github.com/official-fedorenko/webShop-interface/blob/main/img/products/smartphone.png?raw=true",
   },
   {
     id: 2,
     name: "Ноутбук",
     price: 80000,
     description: "Мощный ноутбук для работы и игр.",
-    image: "img/products/laptop.png",
+    image:
+      "https://github.com/official-fedorenko/webShop-interface/blob/main/img/products/laptop.png?raw=true",
   },
   {
     id: 3,
     name: "Планшет",
     price: 30000,
     description: "Удобный планшет для чтения и просмотра видео.",
-    image: "img/products/tablet.png",
+    image:
+      "https://github.com/official-fedorenko/webShop-interface/blob/main/img/products/tablet.png?raw=true",
   },
   {
     id: 4,
