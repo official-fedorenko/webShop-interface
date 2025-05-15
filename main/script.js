@@ -1,29 +1,26 @@
-// внёс небольшие правки
 // массив товаров по электронике
+const cart = [];
 const products = [
   {
     id: 1,
     name: "Смартфон",
     price: 50000,
     description: "Смартфон с отличной камерой и производительностью.",
-    image:
-      "https://github.com/official-fedorenko/webShop-interface/blob/main/img/products/smartphone.png?raw=true",
+    image: "img/products/smartphone.png",
   },
   {
     id: 2,
     name: "Ноутбук",
     price: 80000,
     description: "Мощный ноутбук для работы и игр.",
-    image:
-      "https://github.com/official-fedorenko/webShop-interface/blob/main/img/products/laptop.png?raw=true",
+    image: "img/products/laptop.png",
   },
   {
     id: 3,
     name: "Планшет",
     price: 30000,
     description: "Удобный планшет для чтения и просмотра видео.",
-    image:
-      "https://github.com/official-fedorenko/webShop-interface/blob/main/img/products/tablet.png?raw=true",
+    image: "img/products/tablet.png",
   },
   {
     id: 4,
@@ -79,6 +76,28 @@ function renderProducts() {
     productContainer.appendChild(goodsCard);
   });
 }
-
 // вызываем функцию для отображения товаров
 renderProducts();
+
+// функция для обновления корзины
+function updateCart() {
+  const cartIcon = document.getElementById("cart-icon");
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+  cartIcon.textContent = `Корзина (${totalItems})`; // обновляем текст иконки корзины
+}
+
+// обработка события клика на кнопку "Добавить в корзину"
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("add-to-cart")) {
+    const productId = parseInt(event.target.dataset.id);
+    const product = products.find((item) => item.id === productId);
+    const cartItem = cart.find((item) => item.id === productId);
+    if (cartItem) {
+      cartItem.quantity += 1; // увеличиваем количество товара в корзине
+    } else {
+      cart.push({ ...product, quantity: 1 }); // добавляем товар в корзину
+    }
+  }
+  updateCart(); // вызываем функцию для обновления корзины
+  console.log(cart); // выводим корзину в консоль для проверки
+});
